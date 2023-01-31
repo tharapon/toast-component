@@ -10,12 +10,12 @@ const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
 	const [variant, setVariant] = React.useState('notice');
-	const [content, setContent] = React.useState('');
+	const [message, setMessage] = React.useState('');
 	const [pop, setPop] = React.useState(false);
 
 	const handleClick = () => {
 		setPop(true);
-		console.log({ variant, content });
+		console.log({ variant, message });
 	};
 
 	return (
@@ -26,7 +26,9 @@ function ToastPlayground() {
 			</header>
 
 			{pop && (
-				<Toast variant={variant} content={content} setPop={setPop} />
+				<Toast variant={variant} setPop={setPop}>
+					{message}
+				</Toast>
 			)}
 
 			<div className={styles.controlsWrapper}>
@@ -41,8 +43,8 @@ function ToastPlayground() {
 						<textarea
 							id='message'
 							className={styles.messageInput}
-							value={content}
-							onChange={(event) => setContent(event.target.value)}
+							value={message}
+							onChange={(event) => setMessage(event.target.value)}
 						/>
 					</div>
 				</div>

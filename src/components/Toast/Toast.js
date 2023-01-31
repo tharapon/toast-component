@@ -18,14 +18,14 @@ const ICONS_BY_VARIANT = {
 	error: AlertOctagon,
 };
 
-function Toast({ variant, content, setPop }) {
+function Toast({ variant, children, setPop }) {
 	const Icon = ICONS_BY_VARIANT[variant];
 	return (
 		<div className={`${styles.toast} ${styles[variant]}`}>
 			<div className={styles.iconContainer}>
 				<Icon size={24} />
 			</div>
-			<p className={styles.content}>{content}</p>
+			<p className={styles.content}>{children}</p>
 			<button
 				className={styles.closeButton}
 				onClick={() => setPop(false)}>
